@@ -1,5 +1,5 @@
 var groveSensor = require('jsupm_grove');
-// var temp = new groveSensor.GroveTemp(1);
+var temp = new groveSensor.GroveTemp(1);
 
 var http = require("http");  
 var server = http.createServer(function(request, response) {  
