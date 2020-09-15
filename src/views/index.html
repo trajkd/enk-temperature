@@ -1,10 +1,19 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1 id="temp"></h1>
-    <script type="text/javascript">document.getElementById("temp").innerHTML = "The current temperature is C " + temp.value();</script>
-  </body>
+<head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
+    <script>
+        $(function(){
+            var socket = io.connect('http://192.168.43.241:8081');
+            var temperature = $('#temperature');
+            socket.on('temperature',function(data){
+                temperature.html(data.celsius);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>The current temperature is:</h2>
+    <h1><span id="temperature"></span>C</h1>
+</body>
 </html>

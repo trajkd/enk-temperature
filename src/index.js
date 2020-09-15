@@ -1,14 +1,23 @@
 var groveSensor = require('jsupm_grove');
-var temp = new groveSensor.GroveTemp(1);
+var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+ 
+var tempSensor = new groveSensor.GroveTemp(0);
 
-var http = require("http");  
-var server = http.createServer(function(request, response) {  
-    response.writeHead(200, {  
-        'Content-Type': 'text/plain'  
-    });  
-    response.write("Test Message.");  
-    response.end();  
-});  
+app.get('/', function(req, res) {                  
+    res.sendfile(__dirname + '/src/views/index.html');
+});                                                 
+ 
+io.on('connection', function(socket){
+    var interval = setInterval(function(){
+        socket.emit('temperature', { celsius: tempSensor.value() });
+    }, 500);
+    socket.on('disconnect', function(){
+        clearInterval(interval);
+    });    
+});                                                   
+ 
 server.listen(8081);
 
 var localtunnel = require('localtunnel');
