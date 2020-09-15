@@ -1,6 +1,16 @@
 var groveSensor = require('jsupm_grove');
 // var temp = new groveSensor.GroveTemp(1);
 
+var http = require("http");  
+var server = http.createServer(function(request, response) {  
+    response.writeHead(200, {  
+        'Content-Type': 'text/plain'  
+    });  
+    response.write("Test Message.");  
+    response.end();  
+});  
+server.listen(8081);
+
 var localtunnel = require('localtunnel');
 var port = 8081;
 
