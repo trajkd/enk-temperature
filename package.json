@@ -4,8 +4,19 @@
   "description": "Send temperature information to the Web",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "sudo node index.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trajkd/enk-temperature.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trajkd/enk-temperature/issues"
+  },
+  "homepage": "https://github.com/trajkd/enk-temperature#readme",
+  "dependencies": {
+    "mraa": "^1.9.0"
+  }
 }

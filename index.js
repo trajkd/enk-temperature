@@ -1,5 +1,5 @@
 var groveSensor = require('jsupm_grove');
-var temp = new groveSensor.GroveTemp(1);
+// var temp = new groveSensor.GroveTemp(1);
 
 var localtunnel = require('localtunnel');
 var port = 8081;
